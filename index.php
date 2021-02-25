@@ -9,6 +9,13 @@
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="home.php">home</a></li>
+            <li><a href="about.php">about</a></li>
+            <li><a href="voting.php">voting</a></li>
+        </ul>
+    </nav>
     <label>Well come to PHP world <?php echo $_POST['name'] ?></label>
     <form action="#" method="post">
         <input type="text" name="name" id="">
