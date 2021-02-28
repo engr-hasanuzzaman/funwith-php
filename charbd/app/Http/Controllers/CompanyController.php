@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Http;
+use PhpParser\Node\Expr\FuncCall;
 
 class CompanyController extends Controller
 {
@@ -20,5 +23,11 @@ class CompanyController extends Controller
     public function store(Request $request) {
         $company = Company::create($request->all());
         return response($company);
+    }
+
+    public function update(Request $request, int $id) {
+        $company = Company::find($id);
+        $company->update($request->all());
+        return response($company, Response::HTTP_ACCEPTED);
     }
 }
