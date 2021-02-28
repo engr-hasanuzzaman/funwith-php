@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyCreateRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,14 +22,14 @@ class CompanyController extends Controller
         return response($company);
     }
 
-    public function store(Request $request) {
-        $company = Company::create($request->all());
+    public function store(CompanyCreateRequest $request) {
+        $company = Company::create($request->only(['name', 'information', 'address']));
         return response($company);
     }
 
-    public function update(Request $request, int $id) {
+    public function update(CompanyUpdateRequest $request, int $id) {
         $company = Company::find($id);
-        $company->update($request->all());
+        $company->update($request->only(['name', 'information', 'address']));
         return response($company, Response::HTTP_ACCEPTED);
     }
 
