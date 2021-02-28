@@ -30,4 +30,9 @@ class CompanyController extends Controller
         $company->update($request->all());
         return response($company, Response::HTTP_ACCEPTED);
     }
+
+    public function destroy(int $id) {
+        Company::destroy($id);
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }
