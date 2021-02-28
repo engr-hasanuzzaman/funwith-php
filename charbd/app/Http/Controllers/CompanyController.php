@@ -14,10 +14,10 @@ class CompanyController extends Controller
 {
     public function index(Request $request)
     {
-       return Company::all();
+       return Company::paginate();
     }
 
-    public function show($id) {
+    public function show(int $id) {
         $company = Company::find($id);
         return response($company);
     }
