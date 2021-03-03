@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
@@ -22,3 +22,4 @@ use App\Http\Controllers\CompanyController;
 
 Route::get('users', [UserController::class, 'index']);
 Route::apiResource('companies', CompanyController::class);
+Route::post('login', [AuthController::class, 'login']);
