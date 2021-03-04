@@ -26,3 +26,4 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 Route::apiResource('companies', CompanyController::class);
 Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
