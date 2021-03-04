@@ -20,6 +20,9 @@ use App\Http\Controllers\CompanyController;
 //     return $request->user();
 // });
 
-Route::get('users', [UserController::class, 'index']);
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('users', [UserController::class, 'index']);
+});
+
 Route::apiResource('companies', CompanyController::class);
 Route::post('login', [AuthController::class, 'login']);
