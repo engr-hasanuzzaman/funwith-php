@@ -22,6 +22,9 @@ use App\Http\Controllers\CompanyController;
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('users', [UserController::class, 'index']);
+    Route::get('profile', [UserController::class, 'profile']);
+    Route::put('profile', [UserController::class, 'updateProfile']);
+    Route::put('users/password', [UserController::class, 'updatePassword']);
 });
 
 Route::apiResource('companies', CompanyController::class);
