@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $roleSeeder = new RoleSeeder();
-        // $roleSeeder->run();
-        // \App\Models\User::factory(10)->create();
-        Product::factory(20)->create();
+        $roleSeeder = new RoleSeeder();
+        $roleSeeder->run();
+        \App\Models\User::factory(10)->create();
+        (new ProductSeeder())->run();
     }
 }
