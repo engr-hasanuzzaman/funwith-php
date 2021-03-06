@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 
 /*
@@ -28,6 +29,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('profile', [UserController::class, 'updateProfile']);
     Route::put('users/password', [UserController::class, 'updatePassword']);
     Route::apiResource('roles', RoleController::class);
+    Route::apiResource('products', ProductController::class);
 });
 
 Route::apiResource('companies', CompanyController::class);
