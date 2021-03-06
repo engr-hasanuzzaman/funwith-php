@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,12 +11,12 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        return Product::paginate();
+        return ProductResource::collection(Product::paginate());
     }
 
     public function show(int $id)
     {   
-        return Product::find($id);
+        return new ProductResource(Product::find($id));
     }
 
     public function store(Request $request)
