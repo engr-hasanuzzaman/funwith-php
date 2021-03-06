@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-       return User::all();
+       return User::with('role')->paginate();
     }
 
     public function profile()
@@ -23,7 +23,7 @@ class UserController extends Controller
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
-        $user->update($request->only('name'));
+        $user->update($request->only('name', 'role_id'));
         return response($user, Response::HTTP_OK);
     }
 
@@ -36,5 +36,11 @@ class UserController extends Controller
 
         $user->update(['password' => Hash::make($request->input('password'))]);
         return response($user, Response::HTTP_ACCEPTED);
+    }
+
+    public function show(int $id)
+    {
+        $user = User::with('role')->find($id);
+        return response($user, Response::HTTP_OK);
     }
 }
