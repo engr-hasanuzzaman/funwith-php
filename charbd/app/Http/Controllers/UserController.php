@@ -18,14 +18,14 @@ class UserController extends Controller
 
     public function profile()
     {
-        return response(Auth::user());
+        return response(new UserResource(Auth::user()));
     }
 
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
         $user->update($request->only('name', 'role_id'));
-        return response($user, Response::HTTP_OK);
+        return response(new UserResource($user), Response::HTTP_OK);
     }
 
     public function updatePassword(Request $request)
@@ -36,7 +36,7 @@ class UserController extends Controller
         }
 
         $user->update(['password' => Hash::make($request->input('password'))]);
-        return response($user, Response::HTTP_ACCEPTED);
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
     public function show(int $id)
