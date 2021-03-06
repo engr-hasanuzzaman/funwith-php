@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-       return User::with('role')->paginate();
+       return UserResource::collection(User::paginate());
     }
 
     public function profile()
