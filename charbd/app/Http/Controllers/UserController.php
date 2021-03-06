@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,6 @@ class UserController extends Controller
     public function show(int $id)
     {
         $user = User::with('role')->find($id);
-        return response($user, Response::HTTP_OK);
+        return response(new UserResource($user), Response::HTTP_OK);
     }
 }
