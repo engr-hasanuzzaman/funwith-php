@@ -4,3 +4,15 @@ Product::count();
 use\040App\134Models;
 Product::count();
 Product::first();
+Order::all();
+use\040\134App\134Models;
+Order::all();
+Product::all();
+exit
+Order::count();
+\134App\134Models\134Order;
+use\040\134App\134Models\134Order;
+Order::count();
+use\040\134App\134Models\134OrderItem;
+OrderItem::count();
+OrderItem::first();

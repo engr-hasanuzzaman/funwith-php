@@ -13,13 +13,13 @@ class CreateTableOrderIteams extends Migration
      */
     public function up()
     {
-        Schema::create('order_iteams', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->string('product_title');
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
             $table->decimal('price');
-            
+            $table->unsignedBigInteger('quantity');
             $table->timestamps();
         });
     }
