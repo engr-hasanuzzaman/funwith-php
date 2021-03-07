@@ -24,10 +24,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $image = $request->file('image');
-        $image_name = Str::random(10);
-        $image_path = Storage::putFileAs('images', $image, $image_name . '.' . $image->extension());
-        $product = Product::create($request->only('title', 'description', 'price') + [ 'image' => env('APP_URL') . '/app/' . $image_path]);
+        $product = Product::create($request->only('title', 'description', 'price', 'image'));
         return response($product, Response::HTTP_CREATED);
     }
 
