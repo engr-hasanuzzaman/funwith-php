@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImageCreateRequest;
+use App\Http\Requests\ProductCreateRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -22,7 +24,7 @@ class ProductController extends Controller
         return new ProductResource(Product::find($id));
     }
 
-    public function store(Request $request)
+    public function store(ProductCreateRequest $request)
     {
         $product = Product::create($request->only('title', 'description', 'price', 'image'));
         return response($product, Response::HTTP_CREATED);
