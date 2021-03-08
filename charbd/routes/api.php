@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('roles', RoleController::class);
     Route::apiResource('products', ProductController::class);
     Route::post('images/upload', [ImageController::class, 'store']);
+    Route::apiResource('orders', OrderController::class);
 });
 
 Route::apiResource('companies', CompanyController::class);
