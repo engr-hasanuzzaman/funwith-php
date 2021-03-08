@@ -16,3 +16,7 @@ Order::count();
 use\040\134App\134Models\134OrderItem;
 OrderItem::count();
 OrderItem::first();
+use\040\134App\134Models;
+OrderItem::first()->order;
+use\040\134App\134Models\134OrderItem;
+OrderItem::first()->order;
