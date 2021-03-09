@@ -24,9 +24,7 @@ class OrderController extends Controller
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachments; filename=orders.csv',
-            'Pragma' => 'no-cachee',
-            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires' => '0'
+            'Cache-Control' => 'max-age=0, no-store',
         ];
 
         $callback = function () {
