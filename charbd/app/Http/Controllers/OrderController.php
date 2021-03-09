@@ -31,7 +31,8 @@ class OrderController extends Controller
 
         $callback = function () {
             $orders = Order::all();
-            $file = fopen("php::/output", "w");
+            // php://output means we will write the stream data
+            $file = fopen("php://output", "w");
             
             // header row
             fputcsv($file, ['ID', 'Name', 'Email', 'Product Title', 'Price', 'Quantity']);

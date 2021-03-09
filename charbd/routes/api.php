@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('products', ProductController::class);
     Route::post('images/upload', [ImageController::class, 'store']);
     Route::apiResource('orders', OrderController::class);
+    Route::get('export', [OrderController::class, 'export']);
 });
 
 Route::apiResource('companies', CompanyController::class);
