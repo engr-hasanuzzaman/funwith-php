@@ -1,0 +1,4 @@
+_HiStOrY_V2_
+Role::query()->destroy_all();
+Role::query()->destroy();
+Role::destroy();
