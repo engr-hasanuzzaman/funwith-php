@@ -1,7 +1,17 @@
 #!/bin/bash
-echo $1
-application_names="apache, mysql and redish"
+application_names="apache, mysql and redish revices"
 start="start"
+stop="stop"
 if [ "$1" = "${start}" ]; then
-  echo "start the local $application_names";
+  systemctl start mysql.service
+  systemctl start apache2.service
+  systemctl start redis.service
+  echo " ${application_names} have been started"
+fi
+
+if [ "$1" = "${stop}" ]; then
+  systemctl stop mysql.service
+  systemctl stop apache2.service
+  systemctl stop redis.service
+  echo " ${application_names} have been stopped"
 fi
