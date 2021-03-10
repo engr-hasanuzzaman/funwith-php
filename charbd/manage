@@ -1,0 +1,7 @@
+#!/bin/bash
+echo $1
+application_names="apache, mysql and redish"
+start="start"
+if [ "$1" = "${start}" ]; then
+  echo "start the local $application_names";
+fi
