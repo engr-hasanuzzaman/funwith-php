@@ -24,25 +24,23 @@ class RolePermissionSeeder extends Seeder
                 'permission_id' => $permission->id,
             ]);
         }
-
-        // TODO: need to change manager to 
-        $manager = Role::whereName('Manager')->first();
+        
         $editor = Role::whereName('Editor')->first();
         foreach($permissions as $permission) {
             if (!in_array($permission->name, ['edit_roles'])) {
                 DB::table('permission_role')->insert([
-                    'role_id' => $manager->id,
+                    'role_id' => $editor->id,
                     'permission_id' => $permission->id,
                 ]);
             }
         }
 
-         // all the permissions except edit_roles, edit_users
-         $editor = Role::whereName('Editor')->first();
+         $reviewerPermissions = ['view_users', 'view_roles', 'view_products', 'view_orders'];
+         $reviewer = Role::whereName('Reviewer')->first();
          foreach($permissions as $permission) {
-             if (!in_array($permission->name, ['edit_roles', 'edit_users'])) {
+             if (in_array($permission->name, $reviewerPermissions)) {
                  DB::table('permission_role')->insert([
-                     'role_id' => $manager->id,
+                     'role_id' => $reviewer->id,
                      'permission_id' => $permission->id,
                  ]);
              }
