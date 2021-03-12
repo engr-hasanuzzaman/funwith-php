@@ -49,6 +49,7 @@ class UserController extends Controller
 
     public function show(int $id)
     {
+        \Gate::authorize('view', 'users');
         $user = User::with('role')->find($id);
         return response(new UserResource($user), Response::HTTP_OK);
     }
