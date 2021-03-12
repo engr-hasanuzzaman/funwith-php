@@ -27,5 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
+        Gate::define('view', function (\App\Models\User $user, string $model) {
+           return $user->hasPermission("view_$model");
+        });
     }
 }

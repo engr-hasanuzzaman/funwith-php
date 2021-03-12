@@ -86,4 +86,13 @@ class User extends Authenticatable
     public function getPermissionsAttribute() {
         return $this->role->permissions;
     }
+
+    public function getPermissionsNameAttribute()
+    {
+        return $this->permissions->pluck('name');
+    }
+    
+    public function hasPermission(string $permission) {
+        return $this->permissionsName->contains($permission);
+    }
 }
