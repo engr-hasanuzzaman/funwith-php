@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 
@@ -35,6 +36,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('images/upload', [ImageController::class, 'store']);
     Route::apiResource('orders', OrderController::class);
     Route::get('export', [OrderController::class, 'export']);
+    Route::get('permissions', [PermissionController::class, 'index']);
 });
 
 Route::apiResource('companies', CompanyController::class);
