@@ -18,7 +18,14 @@ class UserController extends Controller
 
     public function profile()
     {
-        return response(new UserResource(Auth::user()));
+        $user = \Auth::user();
+        // NOTE: use resource with the below does not add permisson
+        // additional does not work with
+        return (new UserResource($user))->additional([
+            'data' => [
+                'permissions' => $user->permissions->pluck('name'),
+            ]
+        ]);
     }
 
     public function updateProfile(Request $request)
