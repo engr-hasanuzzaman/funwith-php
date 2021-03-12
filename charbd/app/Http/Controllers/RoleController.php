@@ -28,6 +28,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        \Gate::authorize('edit', 'roles');
         DB::beginTransaction();
         $role = Role::create($request->only('name'));
         if($permissionIds = $request->input('permissions')) {
@@ -63,6 +64,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        \Gate::authorize('edit', 'roles');
         DB::beginTransaction();
         $role = Role::find($id);
         $role->update($request->only('name'));
@@ -88,6 +90,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        \Gate::authorize('edit', 'roles');
         DB::beginTransaction();
         // delete permissions also
         DB::table('permission_role')->where('role_id', $id)->delete();
