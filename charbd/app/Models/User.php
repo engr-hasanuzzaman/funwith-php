@@ -74,8 +74,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /*
+    * associations
+    */ 
+
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function getPermissionsAttribute() {
+        return $this->role->permissions;
     }
 }
