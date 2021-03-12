@@ -24,6 +24,7 @@ class OrderFactory extends Factory
         return [
             'name' => $this->faker->name,
             'email' => $this->faker->email,
+            'created_at' => $this->faker->dateTime,
         ];
     }
 }
