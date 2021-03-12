@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\RoleResource;
 use App\Models\Role;
+use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
@@ -52,6 +53,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('view', 'roles');
         return response(new RoleResource(Role::find($id)));
     }
 
@@ -64,7 +66,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        \Gate::authorize('edit', 'roles');
+        Gate::authorize('edit', 'roles');
         DB::beginTransaction();
         $role = Role::find($id);
         $role->update($request->only('name'));
@@ -90,7 +92,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        \Gate::authorize('edit', 'roles');
+        Gate::authorize('edit', 'roles');
         DB::beginTransaction();
         // delete permissions also
         DB::table('permission_role')->where('role_id', $id)->delete();
