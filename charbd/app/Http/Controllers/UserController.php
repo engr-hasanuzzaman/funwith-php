@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
-    {
-        /**
+{
+    /**
      * @OA\Get(
      *      path="/api/users",
      *      operationId="getUsersList",
@@ -20,7 +20,8 @@ class UserController extends Controller
      *      description="Returns list of users",
      *      @OA\Response(
      *          response=200,
-     *          description="successful operation"
+     *          description="successful operation",
+     *          @OA\JsonContent()
      *       ),
      *       @OA\Response(response=400, description="Bad request"),
      *       security={
