@@ -32,5 +32,13 @@ class Controller extends BaseController
      *      description="local server"
      *  )
      *
+     * @OA\SecurityScheme(
+     *    securityScheme="bearerAuth",
+     *    in="header",
+     *    name="bearerAuth",
+     *    type="http",
+     *    scheme="bearer",
+     *    bearerFormat="JWT",
+     * ),
      */
 }
