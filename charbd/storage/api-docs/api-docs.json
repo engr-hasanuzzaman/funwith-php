@@ -42,7 +42,7 @@
                 },
                 "security": [
                     {
-                        "api_key_security_example": []
+                        "bearerAuth": []
                     }
                 ]
             }
