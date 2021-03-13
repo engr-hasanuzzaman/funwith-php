@@ -10,7 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
-{
+    {
+        /**
+     * @OA\Get(
+     *      path="/api/users",
+     *      operationId="getUsersList",
+     *      tags={"users"},
+     *      summary="Get list of user",
+     *      description="Returns list of users",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation"
+     *       ),
+     *       @OA\Response(response=400, description="Bad request"),
+     *       security={
+     *           {"api_key_security_example": {}}
+     *       }
+     *     )
+     *
+     * Returns list of users
+     */
     public function index(Request $request)
     {
         \Gate::authorize('view', 'users');
