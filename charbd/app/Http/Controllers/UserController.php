@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -72,6 +73,16 @@ class UserController extends Controller
 
         $user->update(['password' => Hash::make($request->input('password'))]);
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
+    }
+
+    public function store(RegisterRequest $request) {
+        \Gate::authorize('edit', 'users');
+        $user = User::create(
+            $request->only('name', 'email', 'role_id') + 
+            ['password' => Hash::make('password')]
+        );
+
+        return response($user, Response::HTTP_CREATED);
     }
 
     /**
