@@ -26,9 +26,16 @@ class UserController extends Controller
      *       @OA\Response(response=400, description="Bad request"),
      *       security={
      *           {"bearerAuth": {}}
-     *       }
-     *     )
-     *
+     *       },
+     *      @OA\Parameter(
+     *          name="page",
+     *          in="query",
+     *          description="Pagination Page",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *  )
      * Returns list of users
      */
     public function index(Request $request)

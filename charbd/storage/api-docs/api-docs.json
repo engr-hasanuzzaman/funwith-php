@@ -27,6 +27,16 @@
                 "summary": "Get list of user",
                 "description": "Returns list of users",
                 "operationId": "getUsersList",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Pagination Page",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
