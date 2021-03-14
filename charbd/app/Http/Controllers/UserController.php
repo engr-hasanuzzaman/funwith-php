@@ -93,6 +93,7 @@ class UserController extends Controller
      *      @OA\Parameter(
      *          name="id",
      *          in="path",
+     *          required=true,
      *          description="User ID",
      *          @OA\Schema(
      *              type="integer"
