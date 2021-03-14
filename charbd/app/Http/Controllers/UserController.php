@@ -75,6 +75,29 @@ class UserController extends Controller
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
+    /**
+     * @OA\Post(
+     *      path="/api/users",
+     *      operationId="createUser",
+     *      tags={"users"},
+     *      summary="Create new user",
+     *      description="Returns new user information",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *       @OA\Response(response=400, description="Bad request"),
+     *       security={
+     *           {"bearerAuth": {}}
+     *       },
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/RegisterRequest"),
+     *      ),
+     *  )
+     * Returns list of users
+     */
     public function store(RegisterRequest $request) {
         \Gate::authorize('edit', 'users');
         $user = User::create(
