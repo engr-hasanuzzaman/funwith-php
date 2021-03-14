@@ -74,6 +74,33 @@ class UserController extends Controller
         return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
+    /**
+     * @OA\Get(
+     *      path="/api/users/{id}",
+     *      operationId="getUser",
+     *      tags={"users"},
+     *      summary="Get user information",
+     *      description="Returns user information",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *       @OA\Response(response=400, description="Bad request"),
+     *       security={
+     *           {"bearerAuth": {}}
+     *       },
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          description="User ID",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *  )
+     * Returns list of users
+     */
     public function show(int $id)
     {
         \Gate::authorize('view', 'users');
