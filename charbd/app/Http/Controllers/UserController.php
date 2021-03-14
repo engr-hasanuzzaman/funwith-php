@@ -83,7 +83,7 @@ class UserController extends Controller
      *      summary="Create new user",
      *      description="Returns new user information",
      *      @OA\Response(
-     *          response=200,
+     *          response=201,
      *          description="successful operation",
      *          @OA\JsonContent()
      *       ),
