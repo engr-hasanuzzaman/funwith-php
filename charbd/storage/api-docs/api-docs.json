@@ -93,6 +93,34 @@
                 ]
             }
         },
+        "/api/profile": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get profile information",
+                "description": "Returns user information",
+                "operationId": "userProfile",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/users/{id}": {
             "get": {
                 "tags": [

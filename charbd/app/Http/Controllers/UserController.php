@@ -60,7 +60,7 @@ class UserController extends Controller
     /**
      * @OA\Get(
      *      path="/api/profile",
-     *      operationId=userProfile",
+     *      operationId="userProfile",
      *      tags={"users"},
      *      summary="Get profile information",
      *      description="Returns user information",
