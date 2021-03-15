@@ -57,6 +57,25 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * @OA\Get(
+     *      path="/api/profile",
+     *      operationId=userProfile",
+     *      tags={"users"},
+     *      summary="Get profile information",
+     *      description="Returns user information",
+     *      @OA\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @OA\JsonContent()
+     *       ),
+     *       @OA\Response(response=400, description="Bad request"),
+     *       security={
+     *           {"bearerAuth": {}}
+     *       },
+     *  )
+     * Returns list of users
+     */
     public function updateProfile(Request $request)
     {
         $user = Auth::user();
