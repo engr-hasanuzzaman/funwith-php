@@ -3,7 +3,7 @@
     <h1 class="h3 mb-3 fw-normal">Please Register</h1>
     <label for="inputName" class="visually-hidden">Name</label>
     <input
-      type="email"
+      type="text"
       id="inputName"
       class="form-control"
       placeholder="Name"
