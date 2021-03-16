@@ -45,32 +45,39 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from "vue";
+import axios from "axios";
+import { useRouter } from "vue-router";
 
 export default {
-    name: "Register",
-    setup() {
-        const name = ref('');
-        const email = ref('');
-        const password = ref('');
-        const passwordConfirm = ref('');
-        const handleSubmit = () => {
-            console.log({
-                name,
-                email,
-                password,
-                passwordConfirm
-            });
-        }
-        return {
-            name,
-            email,
-            password,
-            passwordConfirm,
-            handleSubmit
-        }
-    },
-}
+  name: "Register",
+  setup() {
+    const name = ref("");
+    const email = ref("");
+    const password = ref("");
+    const passwordConfirm = ref("");
+    const route = useRouter();
+
+    const handleSubmit = async () => {
+      const resp = axios.post("http://localhost/api/register", {
+        name: name.value,
+        email: email.value,
+        password: password.value,
+        confirm_password: passwordConfirm.value,
+        role_id: 1,
+      });
+      await route.push("/login");
+    };
+
+    return {
+      name,
+      email,
+      password,
+      passwordConfirm,
+      handleSubmit,
+    };
+  },
+};
 </script>
 
 <style>
@@ -87,9 +94,9 @@ body {
   background-color: #f5f5f5;
 }
 .form {
-    width: 40%;
-    margin: auto;
-};
+  width: 40%;
+  margin: auto;
+}
 
 .form-signin {
   width: 100%;
