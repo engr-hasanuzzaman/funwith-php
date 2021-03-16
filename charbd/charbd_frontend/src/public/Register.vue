@@ -1,5 +1,5 @@
 <template>
-  <form @submit="handleSubmit" class="form">
+  <form @submit.prevent="handleSubmit" class="form">
     <h1 class="h3 mb-3 fw-normal">Please Register</h1>
     <label for="inputName" class="visually-hidden">Name</label>
     <input
@@ -54,8 +54,7 @@ export default {
         const email = ref('');
         const password = ref('');
         const passwordConfirm = ref('');
-        const handleSubmit = (e) => {
-            e.preventDefault();
+        const handleSubmit = () => {
             console.log({
                 name,
                 email,
