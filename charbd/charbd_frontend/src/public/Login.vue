@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form class="form">
     <h1 class="h3 mb-3 fw-normal">Please Login</h1>
     <label for="inputEmail" class="visually-hidden">Email address</label>
     <input
@@ -39,6 +39,11 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+}
+
+.form {
+  width: 40%;
+  margin: auto;
 }
 
 .form-signin {
