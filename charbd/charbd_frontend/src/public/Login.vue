@@ -40,9 +40,9 @@ export default {
         password: password.value
       });
 
-      // debugger;
       localStorage.setItem('token', response.data.access_token);
-      await route.push('/profile');
+      axios.defaults.headers['Authorization'] = `Bearer ${response.data.access_token}`;
+      await route.push('/');
     };
 
     return {

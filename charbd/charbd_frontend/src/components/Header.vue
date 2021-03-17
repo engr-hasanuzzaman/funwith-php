@@ -24,14 +24,26 @@
       />
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
+          <a class="nav-link" href="javascript:void(0)" @click.prevent="logout">Sign out</a>
         </li>
       </ul>
     </header>
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 export default {
-    name: "Header"
+    name: "Header",
+    setup() {
+      const route = useRouter();
+      const logout = async () => {
+        localStorage.clear();
+        await route.push('/login');
+      };
+
+      return {
+        logout
+      }
+    }
 }
 </script>
