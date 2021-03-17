@@ -59,13 +59,14 @@ export default {
     const route = useRouter();
 
     const handleSubmit = async () => {
-      const resp = axios.post("http://localhost/api/register", {
+      axios.post("http://localhost/api/register", {
         name: name.value,
         email: email.value,
         password: password.value,
         confirm_password: passwordConfirm.value,
         role_id: 1,
       });
+      
       await route.push("/login");
     };
 

@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form class="form" @submit.prevent="loginHandler">
     <h1 class="h3 mb-3 fw-normal">Please Login</h1>
     <label for="inputEmail" class="visually-hidden">Email address</label>
     <input
@@ -8,6 +8,7 @@
       class="form-control"
       placeholder="Email address"
       required=""
+      v-model="email"
     />
     <label for="inputPassword" class="visually-hidden">Password</label>
     <input
@@ -16,14 +17,38 @@
       class="form-control"
       placeholder="Password"
       required=""
+      v-model="password"
     />
     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
   </form>
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+import axios from "axios";
+import { useRouter } from 'vue-router';
 export default {
   name: "Login",
+  setup() {
+    const email = ref("");
+    const password = ref("");
+    const route = useRouter();
+
+    const loginHandler = async () => {
+      await axios.post("http://localhost/api/login", {
+        email: email.value,
+        password: password.value
+      });
+
+      await route.push('/profile');
+    };
+
+    return {
+      email,
+      password,
+      loginHandler
+    }
+  },
 };
 </script>
 
