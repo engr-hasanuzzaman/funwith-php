@@ -8,12 +8,13 @@ import Dashboard from "@/secure/dashboard/Dashboard.vue";
 const routes: Array<RouteRecordRaw> = [
   { path: '/register', component: Register },
   { path: '/login', component: Login },
-  { path: '/profile', component: Profile },
+  
   {
     path: '/',
     component: Secure,
     children: [
-      { path: '', component: Dashboard }
+      { path: '', component: Dashboard },
+      { path: '/profile', component: Profile },
     ]
   },
 ]
