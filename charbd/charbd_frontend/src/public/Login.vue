@@ -35,11 +35,13 @@ export default {
     const route = useRouter();
 
     const loginHandler = async () => {
-      await axios.post("http://localhost/api/login", {
+      const response = await axios.post("/login", {
         email: email.value,
         password: password.value
       });
 
+      // debugger;
+      localStorage.setItem('token', response.data.access_token);
       await route.push('/profile');
     };
 
