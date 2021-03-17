@@ -59,7 +59,7 @@ export default {
     const route = useRouter();
 
     const handleSubmit = async () => {
-      axios.post("http://localhost/api/register", {
+      axios.post("register", {
         name: name.value,
         email: email.value,
         password: password.value,
