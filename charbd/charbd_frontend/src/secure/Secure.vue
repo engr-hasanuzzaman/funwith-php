@@ -1,34 +1,11 @@
 <template>
   <div>
     <Header />
-
     <div class="container-fluid">
       <div class="row">
         <Menu />
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <h2>Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>random</td>
-                  <td>data</td>
-                  <td>placeholder</td>
-                  <td>text</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <router-view />
         </main>
       </div>
     </div>
@@ -38,9 +15,22 @@
 <script>
 import Menu from "@/components/Menu";
 import Header from "@/components/Header";
+import { onMounted } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default {
   name: "App",
+  setup() {
+    const router = useRouter();
+    onMounted(async () => {
+      try {
+        await axios.get('profile');
+      } catch (error) {
+        await router.push('/login');
+      }
+    });
+  },
   components: {
     Menu,
     Header,
