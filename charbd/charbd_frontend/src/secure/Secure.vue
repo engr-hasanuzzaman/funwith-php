@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :user="user" />
     <div class="container-fluid">
       <div class="row">
         <Menu />
@@ -15,7 +15,7 @@
 <script>
 import Menu from "@/components/Menu";
 import Header from "@/components/Header";
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
@@ -23,13 +23,19 @@ export default {
   name: "App",
   setup() {
     const router = useRouter();
+    const user = ref(null);
     onMounted(async () => {
       try {
-        await axios.get('profile');
+        const resp = await axios.get('profile');
+        user.value = resp.data.data;
       } catch (error) {
         await router.push('/login');
       }
     });
+
+    return {
+      user,
+    };
   },
   components: {
     Menu,

@@ -24,6 +24,12 @@
       />
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
+          <router-link to="profile" class="nav-link">
+          {{user?.name}}
+        </router-link>
+        
+        </li>
+        <li class="nav-item text-nowrap">
           <a class="nav-link" href="javascript:void(0)" @click.prevent="logout">Sign out</a>
         </li>
       </ul>
@@ -44,6 +50,7 @@ export default {
       return {
         logout
       }
-    }
+    },
+    props: ['user']
 }
 </script>

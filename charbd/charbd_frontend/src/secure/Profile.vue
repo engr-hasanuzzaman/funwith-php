@@ -7,16 +7,15 @@
 
 <script>
 import axios from 'axios'
+import { ref } from '@vue/reactivity';
 export default {
     name: "Profile",
     setup() {
-        let profileInfo;
+        const profileInfo = ref(null);
 
         const fetechProfileInfo = async () => {
             const resp = await axios.get('/profile');
-            profileInfo = resp.data.data;
-            // debugger;
-            console.log("profile info data is ", profileInfo)
+            profileInfo.value = resp.data.data;
         }
 
         return {
