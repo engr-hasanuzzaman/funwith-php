@@ -4,6 +4,7 @@ import Login from "@/public/Login.vue";
 import Profile from "@/secure/Profile.vue";
 import Secure from "@/secure/Secure.vue";
 import Dashboard from "@/secure/dashboard/Dashboard.vue";
+import Users from "@/secure/user/Users.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/register', component: Register },
@@ -15,6 +16,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       { path: '', component: Dashboard },
       { path: '/profile', component: Profile },
+      { path: '/users', component: Users },
     ]
   },
 ]
