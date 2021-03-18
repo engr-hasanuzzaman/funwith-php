@@ -14,9 +14,9 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     component: Secure,
     children: [
-      { path: '', component: Dashboard },
       { path: '/profile', component: Profile },
       { path: '/users', component: Users },
+      { path: '', component: Dashboard },
     ]
   },
 ]
