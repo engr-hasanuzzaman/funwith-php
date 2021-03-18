@@ -21,17 +21,21 @@
     <nav class="navbar navbar-expand">
       <ul class="nav">
         <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link" @click="prevPage">Previoust</a>
+          <a href="javascript:void(0)" class="nav-link" @click="prevPage"
+            >Previoust</a
+          >
         </li>
         <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link" @click="nextPage">Next</a>
+          <a href="javascript:void(0)" class="nav-link" @click="nextPage"
+            >Next</a
+          >
         </li>
       </ul>
     </nav>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
@@ -39,8 +43,8 @@ export default {
   name: "Users",
   setup() {
     const users = ref([]);
-    const links = ref({});
-    
+    const links = ref({} as {next: string; prev: string});
+
     onMounted(async () => {
       const response = await axios.get("users");
       users.value = response.data.data;
@@ -49,26 +53,24 @@ export default {
     });
 
     const nextPage = async () => {
-        debugger;
-        if (!links.value.next)
-            return;
-        const response = await axios.get(links.value.next);
-        users.value = response.data.data;
-        links.value = response.data.links;
+      debugger;
+      if (!links.value.next) return;
+      const response = await axios.get(links.value.next);
+      users.value = response.data.data;
+      links.value = response.data.links;
     };
 
     const prevPage = async () => {
-        if (!links.value.prev)
-            return;
-        const response = await axios.get(links.value.prev);
-        users.value = response.data.data;
-        links.value = response.data.links;
+      if (!links.value.prev) return;
+      const response = await axios.get(links.value.prev);
+      users.value = response.data.data;
+      links.value = response.data.links;
     };
     return {
       users,
       links,
       nextPage,
-      prevPage
+      prevPage,
     };
   },
 };
