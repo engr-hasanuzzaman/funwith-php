@@ -8,6 +8,9 @@
         <li class="nav-item">
           <router-link class="nav-link active" to="/"> Dashboard </router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link active" to="/users"> Users </router-link>
+        </li>
       </ul>
     </div>
   </nav>
