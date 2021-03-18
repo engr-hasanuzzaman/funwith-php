@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Menu from "@/components/Menu";
-import Header from "@/components/Header";
+import Menu from "@/secure/components/Menu";
+import Header from "@/secure/components/Header";
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
