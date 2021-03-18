@@ -21,12 +21,20 @@
     <nav class="navbar navbar-expand">
       <ul class="nav">
         <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link" @click="prevPage"
+          <a
+            href="javascript:void(0)"
+            class="nav-link"
+            @click="prevPage"
+            v-bind:class="{ disable: !hasPrevPage() }"
             >Previoust</a
           >
         </li>
         <li class="nav-item">
-          <a href="javascript:void(0)" class="nav-link" @click="nextPage"
+          <a
+            href="javascript:void(0)"
+            v-bind:class="{ disable: !hasNextPage() }"
+            class="nav-link"
+            @click="nextPage"
             >Next</a
           >
         </li>
@@ -43,13 +51,12 @@ export default {
   name: "Users",
   setup() {
     const users = ref([]);
-    const links = ref({} as {next: string; prev: string});
+    const links = ref({} as { next: string; prev: string });
 
     onMounted(async () => {
       const response = await axios.get("users");
       users.value = response.data.data;
       links.value = response.data.links;
-      debugger;
     });
 
     const nextPage = async () => {
@@ -66,15 +73,36 @@ export default {
       users.value = response.data.data;
       links.value = response.data.links;
     };
+
+    const hasNextPage = () => {
+      return links.value.next !== undefined && links.value.next !== null;
+    };
+
+    const hasPrevPage = () => {
+      return links.value.prev !== undefined && links.value.prev !== null;
+    };
+
     return {
       users,
       links,
       nextPage,
       prevPage,
+      hasNextPage,
+      hasPrevPage,
     };
   },
 };
 </script>
 
 <style>
+.nav-link {
+  cursor: pointer;
+}
+.disable {
+  color: gray;
+  cursor: default;
+}
+.disable:hover {
+  color: gray;
+}
 </style>
