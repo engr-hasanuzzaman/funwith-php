@@ -22,7 +22,7 @@
               Edit
             </button>
             <button
-              class="btn btn-small btn-outline-secondary"
+              class="btn btn-small btn-danger btn-outline-secondary"
               @click="deleteUsere(user.id)"
             >
               Delete
