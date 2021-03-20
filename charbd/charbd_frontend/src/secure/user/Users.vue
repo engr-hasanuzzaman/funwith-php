@@ -95,6 +95,25 @@ export default {
       return links.value.prev !== undefined && links.value.prev !== null;
     };
 
+    /*
+     * users actions
+     */
+
+    const editUser = async (id: number) => {
+      alert("User with id " + id + " will be editd");
+    };
+
+    const deleteUser = async (id: number) => {
+      try {
+        await axios.post(`users/${id}`);
+        users.value = users.value.filter(
+          (user: { id: number }) => user.id !== id
+        );
+      } catch (error) {
+        console.log(`Some error has been happened ${error}`);
+      }
+    };
+
     return {
       users,
       links,
@@ -102,6 +121,8 @@ export default {
       prevPage,
       hasNextPage,
       hasPrevPage,
+      deleteUser,
+      editUser,
     };
   },
 };
