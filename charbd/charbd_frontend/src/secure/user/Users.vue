@@ -14,7 +14,20 @@
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.role.name }}</td>
-          <td>...</td>
+          <td>
+            <button
+              class="btn btn-small btn-outline-secondary mx-2"
+              @click="editUsere(user.id)"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-small btn-outline-secondary"
+              @click="deleteUsere(user.id)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
