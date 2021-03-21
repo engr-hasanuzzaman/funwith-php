@@ -27,7 +27,7 @@ use App\Http\Controllers\RoleController;
 // });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::get('users', [UserController::class, 'index']);
+    Route::apiResource('users', UserController::class)->only(['index', 'show', 'destroy']);
     Route::get('users/{id}', [UserController::class, 'show']);
     Route::get('profile', [UserController::class, 'profile']);
     Route::put('profile', [UserController::class, 'updateProfile']);

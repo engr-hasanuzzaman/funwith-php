@@ -161,4 +161,12 @@ class UserController extends Controller
         $user = User::with('role')->find($id);
         return response(new UserResource($user), Response::HTTP_OK);
     }
+
+    public function destroy(int $id)
+    {
+        \Gate::authorize('edit', 'users');
+        $user = User::with('role')->find($id);
+        $user->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
 }
