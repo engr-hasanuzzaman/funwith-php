@@ -17,13 +17,13 @@
           <td>
             <button
               class="btn btn-small btn-outline-secondary mx-2"
-              @click="editUsere(user.id)"
+              @click="editUser(user.id)"
             >
               Edit
             </button>
             <button
-              class="btn btn-small btn-danger btn-outline-secondary"
-              @click="deleteUsere(user.id)"
+              class="btn btn-small btn-danger btn-outline-secondary text-white"
+              @click="deleteUser(user.id)"
             >
               Delete
             </button>
@@ -105,10 +105,12 @@ export default {
 
     const deleteUser = async (id: number) => {
       try {
-        await axios.post(`users/${id}`);
-        users.value = users.value.filter(
-          (user: { id: number }) => user.id !== id
-        );
+        if (confirm(`Are you sure to delete the user with id ${id} ?`)) {
+          await axios.post(`users/${id}`);
+          users.value = users.value.filter(
+            (user: { id: number }) => user.id !== id
+          );
+        }
       } catch (error) {
         console.log(`Some error has been happened ${error}`);
       }
