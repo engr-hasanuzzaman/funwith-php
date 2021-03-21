@@ -1,6 +1,7 @@
-import { Permission } from './Permission';
+import { Entity } from "@/interfaces/entity";
+import { Permission } from '@/classes/permission';
 
-export class Role {
+export class Role implements Entity{
     id: number;
     name: string;
     permissions: Permission[];
