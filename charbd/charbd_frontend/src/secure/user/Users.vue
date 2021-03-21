@@ -60,6 +60,8 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
+import { User } from '@/classes/user';
+
 export default {
   name: "Users",
   setup() {
@@ -108,7 +110,7 @@ export default {
         if (confirm(`Are you sure to delete the user with id ${id} ?`)) {
           await axios.delete(`users/${id}`);
           users.value = users.value.filter(
-            (user: { id: number }) => user.id !== id
+            (user: User) => user.id !== id
           );
         }
       } catch (error) {
