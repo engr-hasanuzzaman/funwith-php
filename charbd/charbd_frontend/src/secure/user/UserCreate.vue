@@ -1,21 +1,22 @@
 <template>
-  <form action="" method="post">
+  <form @submit.prevent="submitHandler">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" placeholder="name" id="name" class="form-control" v-model="name"/>
+      <input type="text" placeholder="name" id="name" class="form-control" v-model="name" required/>
     </div>
     <div class="form-group">
-      <label for="email">Name</label>
+      <label for="email">Email</label>
       <input type="email" placeholder="email" id="email" class="form-control"  v-model="email"/>
     </div>
     <div class="form-group">
-      <label for="roleid">Name</label>
-      <select name="role_id" id="roleid" class="form-control">
+      <label for="roleid">Role</label>
+      <select name="role_id" id="roleid" class="form-control" required>
+        <option value="">Select a role</option>
         <option v-for="role in roles" :value="role.i" :key="role.id">{{ role.name }}</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="password">Name</label>
+      <label for="password">Password</label>
       <input
         type="password"
         placeholder="password"
@@ -25,7 +26,7 @@
       />
     </div>
     <div class="form-group">
-      <label for="confirm-password">Name</label>
+      <label for="confirm-password">Confirm Password</label>
       <input
         type="password"
         placeholder="confirm password"
@@ -59,13 +60,25 @@ export default {
       roles.value = response.data.data as Role[];
     });
 
+    // create a new user
+    const submitHandler = async () => {
+      const response = await axios.post('users', {
+        name: name.value,
+        email: email.value,
+        role_id: roleId.value,
+        password: password.value,
+        confirm_password: confirmPassword.value
+      });
+    };
+ 
     return {
       name,
       email,
       roleId,
       password,
       confirmPassword,
-      roles
+      roles,
+      submitHandler
     }
   }
 };
