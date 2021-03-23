@@ -10,7 +10,7 @@
     </div>
     <div class="form-group">
       <label for="roleid">Name</label>
-      <select name="role_id" id="roleid">
+      <select name="role_id" id="roleid" class="form-control">
         <option v-for="role in roles" :value="role.i" :key="role.id">{{ role.name }}</option>
       </select>
     </div>
