@@ -1,4 +1,5 @@
 <template>
+  <router-link to="/users/new" class="btn btn-outline-primary mt-4">Add</router-link>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -75,7 +76,6 @@ export default {
     });
 
     const nextPage = async () => {
-      debugger;
       if (!links.value.next) return;
       const response = await axios.get(links.value.next);
       users.value = response.data.data;

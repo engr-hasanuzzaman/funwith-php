@@ -23,8 +23,8 @@
     </div>
     <div class="form-group">
       <label for="roleid">Role</label>
-      <select name="role_id" id="roleid" class="form-control" required>
-        <option value="">Select a role</option>
+      <select name="role_id" id="roleid" class="form-control" v-model="roleId">
+        <option value="0">Select a role</option>
         <option v-for="role in roles" :value="role.id" :key="role.id">
           {{ role.name }}
         </option>
