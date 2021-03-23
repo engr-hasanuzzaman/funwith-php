@@ -11,9 +11,7 @@
     <div class="form-group">
       <label for="roleid">Name</label>
       <select name="role_id" id="roleid">
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
+        <option v-for="role in roles" :value="role.i" :key="role.id">{{ role.name }}</option>
       </select>
     </div>
     <div class="form-group">
@@ -39,8 +37,12 @@
   </form>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from '@vue/reactivity';
+import { onMounted } from '@vue/runtime-core';
+import axios from 'axios';
+import { Role } from '@/classes/role';
+
 export default {
   name: 'UserCreate',
   setup() {
@@ -49,13 +51,21 @@ export default {
     const roleId = ref(0);
     const password = ref('');
     const confirmPassword = ref('');
+    
+    // fetch the role ids
+    const roles = ref([] as Role[]);
+    onMounted(async () => {
+      const response = await axios.get('roles');
+      roles.value = response.data.data as Role[];
+    });
 
     return {
       name,
       email,
       roleId,
       password,
-      confirmPassword
+      confirmPassword,
+      roles
     }
   }
 };
