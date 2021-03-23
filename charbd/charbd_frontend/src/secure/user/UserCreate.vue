@@ -9,6 +9,14 @@
       <input type="email" placeholder="email" id="email" class="form-control"  v-model="email"/>
     </div>
     <div class="form-group">
+      <label for="roleid">Name</label>
+      <select name="role_id" id="roleid">
+        <option value="1">1</option>
+        <option value="1">1</option>
+        <option value="1">1</option>
+      </select>
+    </div>
+    <div class="form-group">
       <label for="password">Name</label>
       <input
         type="password"
