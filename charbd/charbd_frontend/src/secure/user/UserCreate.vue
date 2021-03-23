@@ -61,6 +61,7 @@ import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
 import { Role } from "@/classes/role";
+import { useRouter } from "vue-router";
 
 export default {
   name: "UserCreate",
@@ -70,6 +71,7 @@ export default {
     const roleId = ref(0);
     const password = ref("");
     const confirmPassword = ref("");
+    const router = useRouter();
 
     // fetch the role ids
     const roles = ref([] as Role[]);
@@ -80,13 +82,15 @@ export default {
 
     // create a new user
     const submitHandler = async () => {
-      const response = await axios.post("users", {
+      await axios.post("users", {
         name: name.value,
         email: email.value,
         role_id: roleId.value,
         password: password.value,
         confirm_password: confirmPassword.value,
       });
+
+      await router.push("/users");
     };
 
     return {
