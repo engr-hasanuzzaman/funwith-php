@@ -103,10 +103,6 @@ export default {
      * users actions
      */
 
-    const editUser = async (id: number) => {
-      alert("User with id " + id + " will be editd");
-    };
-
     const deleteUser = async (id: number) => {
       try {
         if (confirm(`Are you sure to delete the user with id ${id} ?`)) {
@@ -126,7 +122,6 @@ export default {
       hasNextPage,
       hasPrevPage,
       deleteUser,
-      editUser,
     };
   },
 };
