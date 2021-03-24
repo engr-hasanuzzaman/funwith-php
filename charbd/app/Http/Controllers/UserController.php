@@ -85,6 +85,7 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        \Gate::authorize('edit', 'users');
         $user = Auth::user();
         $user->update($request->only('name', 'role_id'));
         return response(new UserResource($user), Response::HTTP_OK);
