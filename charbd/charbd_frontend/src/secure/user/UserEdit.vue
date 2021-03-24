@@ -50,8 +50,6 @@ export default {
     const name = ref("");
     const email = ref("");
     const roleId = ref(0);
-    const password = ref("");
-    const confirmPassword = ref("");
     const router = useRouter();
     const { params } = useRoute();
     // fetch the role ids
@@ -60,7 +58,8 @@ export default {
       const response = await axios.get("roles");
       roles.value = response.data.data as Role[];
 
-      const user: User = await (await axios.get(`/users/${params.id}`)).data.data;
+      const userResp = await axios.get(`/users/${params.id}`);
+      const user: User = userResp.data;
       name.value = user.name;
       email.value = user.email;
       roleId.value = user.role.id;
@@ -69,12 +68,10 @@ export default {
 
     // create a new user
     const submitHandler = async () => {
-      await axios.post("users", {
+      await axios.put(`users/${params.id}`, {
         name: name.value,
         email: email.value,
         role_id: roleId.value,
-        password: password.value,
-        confirm_password: confirmPassword.value,
       });
 
       await router.push("/users");
@@ -84,8 +81,6 @@ export default {
       name,
       email,
       roleId,
-      password,
-      confirmPassword,
       roles,
       submitHandler,
     };
