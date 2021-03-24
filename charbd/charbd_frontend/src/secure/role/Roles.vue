@@ -7,12 +7,14 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Permissions</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="role in roles" :key="role.id">
           <td>{{ role.name }}</td>
+          <td>{{ role.permissions.map(p => p.name).join(', ') }}</td>
           <td>
             <router-link
               :to="`/roles/${role.id}/edit`"
