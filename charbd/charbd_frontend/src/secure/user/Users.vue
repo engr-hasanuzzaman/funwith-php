@@ -1,5 +1,7 @@
 <template>
-  <router-link to="/users/new" class="btn btn-outline-primary mt-4">Add</router-link>
+  <router-link to="/users/new" class="btn btn-outline-primary mt-4"
+    >Add</router-link
+  >
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -16,12 +18,12 @@
           <td>{{ user.email }}</td>
           <td>{{ user.role.name }}</td>
           <td>
-            <button
+            <router-link
+              :to="`/users/${user.id}/edit`"
               class="btn btn-small btn-outline-secondary mx-2"
-              @click="editUser(user.id)"
             >
               Edit
-            </button>
+            </router-link>
             <button
               class="btn btn-small btn-danger btn-outline-secondary text-white"
               @click="deleteUser(user.id)"
@@ -61,7 +63,7 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
-import { User } from '@/classes/user';
+import { User } from "@/classes/user";
 
 export default {
   name: "Users",
@@ -109,9 +111,7 @@ export default {
       try {
         if (confirm(`Are you sure to delete the user with id ${id} ?`)) {
           await axios.delete(`users/${id}`);
-          users.value = users.value.filter(
-            (user: User) => user.id !== id
-          );
+          users.value = users.value.filter((user: User) => user.id !== id);
         }
       } catch (error) {
         console.log(`Some error has been happened ${error}`);
