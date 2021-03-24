@@ -83,6 +83,13 @@ class UserController extends Controller
         return response(new UserResource($user), Response::HTTP_OK);
     }
 
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->update($request->only('name', 'role_id'));
+        return response(new UserResource($user), Response::HTTP_OK);
+    }
+
     public function updatePassword(Request $request)
     {
         $user = Auth::user();
