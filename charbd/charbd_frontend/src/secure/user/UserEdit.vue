@@ -19,6 +19,7 @@
         id="email"
         class="form-control"
         v-model="email"
+        readonly
       />
     </div>
     <div class="form-group">
