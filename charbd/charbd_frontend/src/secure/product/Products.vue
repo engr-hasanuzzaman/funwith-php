@@ -15,13 +15,13 @@
       </thead>
       <tbody>
         <tr v-for="product in products" :key="product.id">
-          <td>{{ product.name }}</td>
+          <td>{{ product.title }}</td>
           <td>{{ product.description }}</td>
           <td> <img :src="product.image_url" alt="img" width="100"></td>
           <td>{{ product.price }}</td>
           <td>
             <router-link
-              :to="`/products/${product.id}/edit`"
+              :to="`/products/${product.titleid}/edit`"
               class="btn btn-small btn-outline-secondary mx-2"
             >
               Edit
