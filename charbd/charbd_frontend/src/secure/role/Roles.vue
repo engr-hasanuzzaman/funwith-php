@@ -1,7 +1,7 @@
 <template>
-  <router-link to="/users/new" class="btn btn-outline-primary mt-4"
-    >Add</router-link
-  >
+  <router-link to="/roles/new" class="btn btn-outline-primary mt-4">
+    Add
+  </router-link>
   <div class="table-responsive">
     <table class="table table-striped table-sm">
       <thead>
@@ -14,7 +14,7 @@
       <tbody>
         <tr v-for="role in roles" :key="role.id">
           <td>{{ role.name }}</td>
-          <td>{{ role.permissions.map(p => p.name).join(', ') }}</td>
+          <td>{{ role.permissions.map((p) => p.name).join(", ") }}</td>
           <td>
             <router-link
               :to="`/roles/${role.id}/edit`"
@@ -100,7 +100,6 @@ export default {
     /*
      * users actions
      */
-
 
     const deleteRole = async (id: number) => {
       try {
