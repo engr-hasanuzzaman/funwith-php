@@ -13,12 +13,11 @@
     </div>
     <div class="form-group">
       <label for="roleid">Permissions</label>
-      <select name="role_id" id="roleid" class="form-control" v-model="permissionIds" multiple>
-        <option value="0">Select Permissions</option>
-        <option v-for="permission in permissions" :value="permission.id" :key="permission.id">
-          {{ permission.name }}
-        </option>
-      </select>
+      <br/>
+      <template v-for="permission in permissions" :value="permission.id" :key="permission.id">
+         <label class="mr-1" :for="permission.id">{{ permission.name }}</label>
+         <input class="mr-4" :id="permission.id" type="checkbox" :value="permission.id" v-model="permissionIds">
+      </template>
     </div>
     <div class="form-group">
       <button type="submit" class="form-control">Submit</button>
