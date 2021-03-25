@@ -6,10 +6,19 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <router-link class="nav-link" to="/" active-class="" exact> Dashboard </router-link>
+          <router-link class="nav-link" to="/" active-class="" exact>
+            Dashboard
+          </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/users" active-class=""> Users </router-link>
+          <router-link class="nav-link" to="/users" active-class="">
+            Users
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/roles" active-class="">
+            Roles
+          </router-link>
         </li>
       </ul>
     </div>
@@ -23,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-  .sidebar .nav-link.router-link-exact-active {
-    color: #007bff;
-  }
+.sidebar .nav-link.router-link-exact-active {
+  color: #007bff;
+}
 </style>
