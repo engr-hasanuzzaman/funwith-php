@@ -14,10 +14,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product in product" :key="product.id">
+        <tr v-for="product in products" :key="product.id">
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
-          <td> <img :src="product.image" alt="img"></td>
+          <td> <img :src="product.image_url" alt="img"></td>
           <td>{{ product.price }}</td>
           <td>
             <router-link
@@ -74,7 +74,7 @@ export default {
     const links = ref({} as { next: string; prev: string });
 
     onMounted(async () => {
-      const response = await axios.get("users");
+      const response = await axios.get("products");
       products.value = response.data.data;
       links.value = response.data.links;
     });
