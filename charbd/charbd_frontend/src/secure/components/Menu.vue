@@ -20,6 +20,11 @@
             Roles
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/products" active-class="">
+            Products
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>
