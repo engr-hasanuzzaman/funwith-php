@@ -6,7 +6,7 @@
     <table class="table table-striped table-sm">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Title</th>
           <th>Description</th>
           <th>Image</th>
           <th>Price</th>
