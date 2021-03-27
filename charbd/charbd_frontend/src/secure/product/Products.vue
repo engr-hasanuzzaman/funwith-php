@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/users/new" class="btn btn-outline-primary mt-4"
+  <router-link to="/products/new" class="btn btn-outline-primary mt-4"
     >Add</router-link
   >
   <div class="table-responsive">
