@@ -31,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
       { path: '/roles/new', component: NewRole },
       { path: '/roles/:id/edit', component: EditRole },
       { path: '/products', component: Products },
-      { path: '/products/new', component: NewRole },
+      { path: '/products/new', component: NewProduct },
       { path: '/products/:id/edit', component: EditRole },
       { path: '', component: Dashboard },
     ]
