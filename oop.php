@@ -20,9 +20,23 @@ class Todo {
     {
         return $this->title;
     }
+
+    public function getDescrption()
+    {
+        return $this->description;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }
 
-$todo = new Todo(Todo::$last_id + 1, 'test', 'test description');
-echo $todo->getTitle();
+$todo1 = new Todo(Todo::$last_id + 1, 'test', 'test description');
+$todo2 = new Todo(Todo::$last_id + 1, 'test', 'test description');
+$todo3 = new Todo(Todo::$last_id + 1, 'test', 'test description');
+echo "Id of the todo1 is " . $todo1->getId();
+echo "<br> Id of the todo2 is " . $todo2->getId();
+echo "<br> Id of the todo1 is " . $todo3->getId();
 
 ?>
