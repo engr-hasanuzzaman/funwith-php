@@ -16,18 +16,15 @@ class Todo {
         Todo::$last_id++;
     }
 
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
-    public function getDescrption()
-    {
+    public function getDescrption() {
         return $this->description;
     }
 
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 }
@@ -35,8 +32,7 @@ class Todo {
 $todo1 = new Todo(Todo::$last_id + 1, 'test', 'test description');
 $todo2 = new Todo(Todo::$last_id + 1, 'test', 'test description');
 $todo3 = new Todo(Todo::$last_id + 1, 'test', 'test description');
+
 echo "Id of the todo1 is " . $todo1->getId();
 echo "<br> Id of the todo2 is " . $todo2->getId();
 echo "<br> Id of the todo1 is " . $todo3->getId();
-
-?>
