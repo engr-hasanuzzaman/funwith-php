@@ -37,10 +37,14 @@ $todo1 = new Todo(Todo::$last_id + 1, 'test', 'test description');
 $todo2 = new Todo(Todo::$last_id + 1, 'test', 'test description');
 $todo3 = new Todo(Todo::$last_id + 1, 'test', 'test description');
 
-echo "Id of the todo1 is " . $todo1->getId();
-echo "<br> Id of the todo2 is " . $todo2->getId();
-echo "<br> Id of the todo1 is " . $todo3->getId();
-echo "<br/> Before status change " . $todo1->status;
-$this->markDone();
-echo "<br/> After status change " . $todo1->status;
+echo "todo1 is ";
+var_dump($todo1);
+echo "<br>todo2 is ";
+var_dump($todo2);
+echo "<br>todo3 is ";
+var_dump($todo3);
+$todo1->markDone();
+echo "<br/><br/> After status change ";
+var_dump($todo1);
+
 
