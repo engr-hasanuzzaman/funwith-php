@@ -21,6 +21,7 @@ class ComposerStaticInit2603f907bbaaa005542d69e912970471
     );
 
     public static $classMap = array (
+        'App\\Models\\Todo' => __DIR__ . '/../..' . '/src/Models/Todo.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
