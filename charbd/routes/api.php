@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('export', [OrderController::class, 'export']);
     Route::get('permissions', [PermissionController::class, 'index']);
     Route::get('chart', [DashboardController::class, 'chart']);
+    Route::apiResource('todos', TodoController::class);
 });
 
 Route::apiResource('companies', CompanyController::class);
