@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use App\Repositories\Foo;
-use App\Services\TodoServices;
+use App\Services\BarService;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
+use App\Services\ToService;
 
 class TodoController extends Controller
 {
@@ -17,14 +18,7 @@ class TodoController extends Controller
     protected $users;
     protected $service;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param  UserRepository  $users
-     * @param  TodoService  $service
-     * @return void
-     */
-    public function __construct(TodoServices $service, UserRepository $users, )
+    public function __construct(ToService $service, UserRepository $users, )
     {
         $this->service = $service;
         $this->users = $users;
