@@ -6,7 +6,7 @@ use App\Models\Todo;
 use App\Repositories\Foo;
 use App\Services\BarService;
 use Illuminate\Http\Request;
-use App\Repositories\UserRepository;
+use App\Repositories\UsersRepository;
 use App\Services\ToService;
 
 class TodoController extends Controller
@@ -18,7 +18,7 @@ class TodoController extends Controller
     protected $users;
     protected $service;
 
-    public function __construct(ToService $service, UserRepository $users, )
+    public function __construct(ToService $service, UsersRepository $users, )
     {
         $this->service = $service;
         $this->users = $users;
@@ -29,5 +29,10 @@ class TodoController extends Controller
         $todo = Todo::create($request->only('title', 'description'));
 
         return $todo;
+    }
+
+    public function index()
+    {
+        return $this->users->all();
     }
 }
