@@ -14,8 +14,16 @@
          echo "calling __get for " . $key . "\n";
          return $this->attributes[$key];
      }
+
+     public function __set(string $key, $value)
+     {
+         $this->attributes[$key] = $value;
+     }
      
  }
  
  $obj = new MagicGetSet;
  echo $obj->name;
+ $obj->age = 29;
+ echo "<br>";
+ echo "The age is " . $obj->age;
