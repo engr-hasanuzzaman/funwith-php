@@ -96,4 +96,13 @@ class User extends Authenticatable
     public function hasPermission(string $permission) {
         return $this->permissionsName->contains($permission);
     }
+
+    /**
+     * attributes
+     * */ 
+
+     public function getNameAttribute(string $name)
+     {
+         return "Mr. " . $name;
+     }
 }
