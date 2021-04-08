@@ -1,0 +1,2 @@
+- [x] https://dev.to/nvio/laravel-greatest-trick-revealed-magic-methods-31om
+- []
