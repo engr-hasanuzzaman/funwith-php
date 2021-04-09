@@ -9,4 +9,15 @@ class TestArray extends TestCase{
 
         return $stack;
     }
+
+    /**
+     * @depends testStackIsEmpty
+     * */ 
+    public function testPushElements(array $stack)
+    {
+        array_push($stack, "first elemen");
+        $this->assertSame(count($stack), 1);
+
+        return $stack;
+    }
 }
