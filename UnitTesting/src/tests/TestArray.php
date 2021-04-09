@@ -20,4 +20,14 @@ class TestArray extends TestCase{
 
         return $stack;
     }
+
+    /**
+     * @depends testPushElements
+     * */ 
+
+     public function testPop(array $stack)
+     {
+         array_pop($stack);
+         $this->assertSame(count($stack), 0);
+     }
 }
