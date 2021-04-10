@@ -6,7 +6,7 @@ class Queue
 
     public function push($elm)
     {
-        array_unshift($elm); 
+        array_unshift($this->elements, $elm); 
     }
 
     public function pop()

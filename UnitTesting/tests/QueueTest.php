@@ -15,4 +15,10 @@ class QueueTest extends TestCase
     {
         $this->assertEquals($this->queue->getCount(), 0);
     }
+
+    public function testPushMethod()
+    {
+        $this->queue->push(1);
+        $this->assertEquals($this->queue->getCount(), 1);
+    }
 }
