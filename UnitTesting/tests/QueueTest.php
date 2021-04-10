@@ -1,5 +1,5 @@
 <?php
-use Queue;
+use App\Queue;
 use PHPUnit\Framework\TestCase;
 
 class QueueTest extends TestCase
@@ -13,6 +13,6 @@ class QueueTest extends TestCase
 
     public function testInitialSizeIsZero()
     {
-        $this->assertEquals(count($this->queue), 0);
+        $this->assertEquals($this->queue->getCount(), 0);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-
+namespace App;
 class Queue
 {
     protected $elements = [];
@@ -17,5 +17,10 @@ class Queue
     public function top()
     {
         return $this->elements[count($this->elements)];
+    }
+
+    public function getCount()
+    {
+        return count($this->elements);
     }
 }
