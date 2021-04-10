@@ -32,5 +32,6 @@ class QueueTest extends TestCase
         $this->assertEquals($this->queue->pop(), 1);
         $this->assertEquals($this->queue->pop(), 2);
         $this->assertEquals($this->queue->pop(), 3);
+        $this->assertEquals($this->queue->pop(), null);
     }
 }
