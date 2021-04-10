@@ -20,5 +20,7 @@ class QueueTest extends TestCase
     {
         $this->queue->push(1);
         $this->assertEquals($this->queue->getCount(), 1);
+        $this->queue->push(2);
+        $this->assertEquals($this->queue->top(), 1);
     }
 }
