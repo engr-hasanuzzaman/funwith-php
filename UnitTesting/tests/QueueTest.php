@@ -23,4 +23,14 @@ class QueueTest extends TestCase
         $this->queue->push(2);
         $this->assertEquals($this->queue->top(), 1);
     }
+
+    public function testPopMethod()
+    {
+        $this->queue->push(1);
+        $this->queue->push(2);
+        $this->queue->push(3);
+        $this->assertEquals($this->queue->pop(), 1);
+        $this->assertEquals($this->queue->pop(), 2);
+        $this->assertEquals($this->queue->pop(), 3);
+    }
 }
