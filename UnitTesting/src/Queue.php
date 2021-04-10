@@ -16,7 +16,7 @@ class Queue
 
     public function top()
     {
-        return $this->elements[count($this->elements)];
+        return end($this->elements);
     }
 
     public function getCount()
