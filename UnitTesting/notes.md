@@ -1,0 +1,3 @@
+- we can share fixture among multiples test using
+    - `@depends` that will get input from `provider` test functions
+    - using `static setUpBeforeClass` that will be executed be executed before test class.
