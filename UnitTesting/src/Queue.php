@@ -1,16 +1,24 @@
 <?php
+
 namespace App;
+
+use RuntimeException;
+
 class Queue
 {
     protected $elements = [];
 
     public function push($elm)
     {
-        array_unshift($this->elements, $elm); 
+        array_unshift($this->elements, $elm);
     }
 
     public function pop()
     {
+        if ($this->isEmpty()) {
+            return new RuntimeException('Queue is empty');
+        }
+
         return array_pop($this->elements);
     }
 
@@ -27,5 +35,10 @@ class Queue
     public function clear()
     {
         $this->elements = [];
+    }
+
+    public function isEmpty()
+    {
+        return empty($this->elements);
     }
 }
