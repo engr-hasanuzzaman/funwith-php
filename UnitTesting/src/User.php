@@ -17,6 +17,6 @@ class User
 
     public function notify()
     {
-        $this->mailer->sendEmail($this->email, "Message");
+        return $this->mailer->sendEmail($this->email, "Message");
     }
 }
