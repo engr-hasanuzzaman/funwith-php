@@ -16,7 +16,7 @@ class Queue
     public function pop()
     {
         if ($this->isEmpty()) {
-            return new RuntimeException('Queue is empty');
+            throw new RuntimeException('Queue is empty');
         }
 
         return array_pop($this->elements);
