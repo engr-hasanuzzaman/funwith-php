@@ -3,11 +3,11 @@ namespace App;
 
 class Order
 {
-    protected $payment_service;
+    protected $paymenService;
     protected $price;
 
-    public function __construct($payment_service) {
-        $this->payment_service = $payment_service;
+    public function __construct($paymenService) {
+        $this->paymenService = $paymenService;
     }
 
     public function setPrice(float $price)
@@ -17,6 +17,7 @@ class Order
 
     public function process()
     {
-        $this->payment_service->pay();
+        $this->paymenService->pay();
+        return true;
     }
 }
