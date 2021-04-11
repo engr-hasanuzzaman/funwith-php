@@ -1,11 +1,9 @@
 <?php
 
 use App\Order;
-use PHPUnit\Framework\TestCase;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
 
-use function PHPUnit\Framework\once;
-
-class OrderTest extends TestCase
+class OrderTest extends MockeryTestCase
 {
     public function testProcess(): void
     {
@@ -15,7 +13,7 @@ class OrderTest extends TestCase
             ->getMock();
 
         // stubbing the pay method that will receive 1.0 as the parameter and return true
-        $paymenService->expects(once())
+        $paymenService->expects($this->once())
             ->method('pay')
             ->with($this->equalTo(1.0))
             ->willReturn(true);
