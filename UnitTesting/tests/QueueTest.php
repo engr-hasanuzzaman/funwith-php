@@ -4,34 +4,47 @@ use PHPUnit\Framework\TestCase;
 
 class QueueTest extends TestCase
 {
-    protected $queue;
+    protected static $queue;
 
+    // heavy setup before running the test functions
+    public static function setUpBeforeClass(): void
+    {
+        static::$queue =  new Queue;
+    }
+
+    // release the resouces
+    public static function tearDownAfterClass(): void
+    {
+        static::$queue = null;
+    }
+
+    // will be run before test functions
     protected function setUp(): void
     {
-        $this->queue = new Queue;    
+        static::$queue->clear();    
     }
 
     public function testInitialSizeIsZero()
     {
-        $this->assertEquals($this->queue->getCount(), 0);
+        $this->assertEquals(static::$queue->getCount(), 0);
     }
 
     public function testPushMethod()
     {
-        $this->queue->push(1);
-        $this->assertEquals($this->queue->getCount(), 1);
-        $this->queue->push(2);
-        $this->assertEquals($this->queue->top(), 1);
+        static::$queue->push(1);
+        $this->assertEquals(static::$queue->getCount(), 1);
+        static::$queue->push(2);
+        $this->assertEquals(static::$queue->top(), 1);
     }
 
     public function testPopMethod()
     {
-        $this->queue->push(1);
-        $this->queue->push(2);
-        $this->queue->push(3);
-        $this->assertEquals($this->queue->pop(), 1);
-        $this->assertEquals($this->queue->pop(), 2);
-        $this->assertEquals($this->queue->pop(), 3);
-        $this->assertEquals($this->queue->pop(), null);
+        static::$queue->push(1);
+        static::$queue->push(2);
+        static::$queue->push(3);
+        $this->assertEquals(static::$queue->pop(), 1);
+        $this->assertEquals(static::$queue->pop(), 2);
+        $this->assertEquals(static::$queue->pop(), 3);
+        $this->assertEquals(static::$queue->pop(), null);
     }
 }
