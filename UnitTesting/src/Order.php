@@ -17,7 +17,6 @@ class Order
 
     public function process()
     {
-        $this->paymenService->pay();
-        return true;
+        return $this->paymenService->pay($this->price);
     }
 }
