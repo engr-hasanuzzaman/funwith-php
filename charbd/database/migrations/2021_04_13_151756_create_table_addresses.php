@@ -13,8 +13,11 @@ class CreateTableAddresses extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('delivery_addresses', function (Blueprint $table) {
             $table->id();
+            $table->string('text');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
     }
