@@ -9,4 +9,10 @@ class ItemTest extends TestCase
         $item = new Item;
         $this->assertSame($item->title, '');
     }
+
+    public function testGetSlagMethodReturnString()
+    {
+        $item = new Item;
+        $this->assertIsString($item->getSlug());
+    }
 }
