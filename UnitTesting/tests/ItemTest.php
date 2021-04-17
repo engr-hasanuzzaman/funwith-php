@@ -22,4 +22,11 @@ class ItemTest extends TestCase
         $item->title = "This is test";
         $this->assertSame($item->getSlug(), 'This_is_test');
     }
+
+    public function testGetSlagUseSingleUnderscoeForMultipleSpace()
+    {
+        $item = new Item;
+        $item->title = "This           is             test";
+        $this->assertSame($item->getSlug(), 'This_is_test');
+    }
 }
