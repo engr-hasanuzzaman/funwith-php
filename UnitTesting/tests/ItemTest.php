@@ -15,4 +15,11 @@ class ItemTest extends TestCase
         $item = new Item;
         $this->assertIsString($item->getSlug());
     }
+
+    public function testGetSlagReturnUnderScorizedTitle()
+    {
+        $item = new Item;
+        $item->title = "This is test";
+        $this->assertSame($item->getSlug(), 'This_is_test');
+    }
 }
