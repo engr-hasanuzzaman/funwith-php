@@ -6,6 +6,6 @@ class Item{
 
     public function getSlug()
     {
-        return $this->title;
+        return str_replace(' ', '_', $this->title);
     }
 }
