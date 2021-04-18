@@ -21,4 +21,9 @@ class Todo
     {
         return $this->title;
     }
+
+    private function titleWithPrefix(string $prefix)
+    {
+        return $prefix . $this->title;
+    }
 }
