@@ -5,3 +5,4 @@
     - there are two ways we can test protected functions
         - using inheritence by changing the accessibity to public
         - using `Reflection`
+        - N.B: should not test the private methos directly, rather should test the public method that use that private method
