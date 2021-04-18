@@ -14,4 +14,14 @@ class TodoTest extends TestCase
         $result = $getId->invoke($todo);
         $this->assertEquals($result, 12);
     }
+
+    public function testDeafultValueOfid()
+    {
+        $todo = new Todo;
+        $reflectorObj = new ReflectionObject($todo);
+        $id = $reflectorObj->getProperty('id');
+        $id->setAccessible(true);
+        $result = $id->getValue($todo);
+        $this->assertEquals($result, 0);
+    }
 }
