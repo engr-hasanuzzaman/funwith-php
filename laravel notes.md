@@ -11,3 +11,4 @@ public function getNameAttribute(string $name)
 Now if we call `$obj->name` (if the origina name is foo) will returen `Mr. foo`
 # Mutator
 - setter
+- it will not be possible to create associated models using mutator if the associated model need the id of the model
