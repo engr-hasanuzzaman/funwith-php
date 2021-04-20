@@ -12,3 +12,6 @@ Now if we call `$obj->name` (if the origina name is foo) will returen `Mr. foo`
 # Mutator
 - setter
 - it will not be possible to create associated models using mutator if the associated model need the id of the model
+
+### associations
+- laravel use `exists` propert to check foreign constrains model check. So, if we override this property, will be able to make associated model without creating the original model
