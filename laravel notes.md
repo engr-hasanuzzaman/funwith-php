@@ -15,3 +15,6 @@ Now if we call `$obj->name` (if the origina name is foo) will returen `Mr. foo`
 
 ### associations
 - laravel use `exists` propert to check foreign constrains model check. So, if we override this property, will be able to make associated model without creating the original model
+
+### routes
+- we can declare an route as `users/{user}` where `user` object will be resolved by the `Route` not by the IoC container
