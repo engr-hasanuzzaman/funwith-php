@@ -13,11 +13,13 @@ import EditRole from "@/secure/role/RoleEdit.vue";
 import Products from "@/secure/product/Products.vue";
 import NewProduct from "@/secure/product/ProductCreate.vue";
 import EditProduct from "@/secure/product/ProductEdit.vue";
+import Todos from '@/secure/todo/Todos.vue';
 
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/register', component: Register },
   { path: '/login', component: Login },
+  { path: '/todos', component: Todos },
 
   {
     path: '/',
